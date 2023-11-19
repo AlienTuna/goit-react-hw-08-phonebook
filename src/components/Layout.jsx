@@ -1,15 +1,10 @@
-import { NavLink, Outlet } from "react-router-dom";
-
-const { NavStyled } = require("./App.styled");
+import { Outlet } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const Layout = () => {
     return (
         <>
-            <NavStyled>
-                <NavLink to="/phonebook">Phonebook</NavLink>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/user-info">User-info</NavLink>
-            </NavStyled>
+            <Navigation/>
             <main>
                 <Outlet />
             </main>

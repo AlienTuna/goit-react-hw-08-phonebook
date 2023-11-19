@@ -1,5 +1,8 @@
+/*
+    Thunk для работы с API книги контактов
+*/
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addContact, deleteContact, getAllContacts } from "contactsService/contactsAPI";
+import { addContact, deleteContact, getAllContacts } from "services/contactsAPI";
 
 export const requestGetAllContacts = createAsyncThunk(
     'contacts/get', // префикс санки, должен быть уникален, иначе будут применяться некорректные обработчики

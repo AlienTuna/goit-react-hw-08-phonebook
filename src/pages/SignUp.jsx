@@ -1,12 +1,11 @@
-import { Container, SectionStyled } from 'components/App.styled'
 import React from 'react'
 import { BtnStyled, FormStyled, InputStyled, LabelStyled, SpanStyledAsterisk, SpanStyledError } from './form.styled'
+import { Container, SectionStyled } from 'components/App.styled'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { loginThunk } from 'dal/requestUserAuth'
+import { signupThunk } from 'dal/requestUserAuth'
 
-
-const Login = () => {
+const SignUp = () => {
     const dispatch = useDispatch();
 
     const {
@@ -14,25 +13,28 @@ const Login = () => {
         handleSubmit,
         reset,
         formState: { errors },
-      } = useForm()
+    } = useForm()
 
-      const onSubmit = async (formData) => {
-        const result = await dispatch(loginThunk(formData))
-        // if(result.error) {
-
-        //     return;
-        // }
-        console.info('!!! Login Result', result)
+    const onSubmit = (formData) => {
+        dispatch(signupThunk(formData))
+        // console.info('!!!Form Data on submit', formData)
         reset();
-      }
+    }
+
 
     return (
         <SectionStyled>
-        <h1>Log in</h1>
+            <h1>Register new user</h1>
             <Container>
                 <FormStyled onSubmit={handleSubmit(onSubmit)}>
-                    
-                <LabelStyled htmlFor="email">Email <SpanStyledAsterisk>*</SpanStyledAsterisk></LabelStyled>
+
+                    <LabelStyled htmlFor="name">Name <SpanStyledAsterisk>*</SpanStyledAsterisk></LabelStyled>
+                    <InputStyled type="text" placeholder='John Smith'
+                        {...register("name", { required: 'Name is required' })}
+                    />
+                    {errors.name && <SpanStyledError>{errors.name.message}</SpanStyledError>}
+
+                    <LabelStyled htmlFor="email">Email <SpanStyledAsterisk>*</SpanStyledAsterisk></LabelStyled>
                     <InputStyled type="email" placeholder='example@mail.com'
                         {...register("email", {
                             required: 'Email is required',
@@ -54,11 +56,11 @@ const Login = () => {
                     })} />
                     {errors.password && <SpanStyledError role='alert'>{errors.password.message}</SpanStyledError>}
 
-                    <BtnStyled type='submit' onClick={null}>Log in</BtnStyled>
+                    <BtnStyled type='submit' onClick={null}>Register</BtnStyled>
                 </FormStyled>
             </Container>
         </SectionStyled>
     )
 }
 
-export default Login
+export default SignUp
