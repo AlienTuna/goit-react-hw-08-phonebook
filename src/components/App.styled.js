@@ -52,7 +52,7 @@ export const ButtonStyledLogout = styled.button`
         border: none;
         background-color: transparent;
 
-        padding: 20px;
+        padding: 5px;
         transition: all .5s;
         font-size: 15px;
         color: var(--txt-main-color);
@@ -61,9 +61,11 @@ export const ButtonStyledLogout = styled.button`
 
     &:hover, &:focus {
         color: var(--txt-bright-color);
-        border-bottom: solid 2px var(--txt-bright-color);
+        /* border-bottom: solid 2px var(--txt-bright-color); */
         outline: none;
         cursor: pointer;
+        border-radius: 2px;
+        background-color: var(--dark-yellow-color);
     }
     &:focus {
         outline: 1px ridge var(--dark-yellow-color);

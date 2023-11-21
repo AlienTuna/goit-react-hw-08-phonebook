@@ -13,17 +13,13 @@ const Navigation = () => {
 
     return (
         <NavStyled className="navigation">
-            {authenticated &&
-                <>
+            <div>
+                <NavLinkStyled to="/">Home</NavLinkStyled>
+                {authenticated &&
                     <NavLinkStyled to="/phonebook">Phonebook</NavLinkStyled>
-                </>
-            }
-            {!authenticated &&
-                <>
-                    <h2>Welcome to phonebook!</h2>
-                </>
-            }
-            
+                }
+            </div>
+
             <UserMenu />
         </NavStyled>
     )

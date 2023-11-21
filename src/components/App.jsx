@@ -37,7 +37,7 @@ export function App() {
           </Route>
         </Routes>
       </Suspense>
-      {/* <h1>Welcome to phonebook App!</h1> */}
+      <h1 style={{textAlign:"center", fontSize:"100px"}}>꧁꧂</h1>
     </main>
   )
 }
