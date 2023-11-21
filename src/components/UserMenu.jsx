@@ -23,8 +23,8 @@ const UserMenu = () => {
 
             {authenticated &&
                 <>
-                {/* <img src="https://www.iconsdb.com/icons/preview/orange/checked-user-xxl.png" alt="user icon" /> */}
-                    Logged in as <SpanStyledUserName>{userInfo?.name}</SpanStyledUserName>
+                {/* <img src="https://www.iconsdb.com/icons/preview/orange/checked-user-xxl.png" alt="user icon" /> 👤*/}
+                    Logged in as <SpanStyledUserName>{userInfo?.email}</SpanStyledUserName>
                     <ButtonStyledLogout onClick={handleLogout}>Logout</ButtonStyledLogout>
                 </>
             }
