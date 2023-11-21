@@ -12,7 +12,7 @@ export const SectionStyled = styled.div`
     margin-right: auto;
 `
 export const NavStyled = styled.nav`
-    margin: 20px 0 50px 20px;
+    margin: 20px 20px 50px 20px;
     font-weight: 700;
     font-weight: 700;
     padding: 30px;
@@ -50,12 +50,33 @@ export const NavLinkStyled = styled(NavLink)`
 
 export const ButtonStyledLogout = styled.button`
         border: none;
-        background-color: none;
+        background-color: transparent;
 
         padding: 20px;
         transition: all .5s;
-        font-size: 18px;
+        font-size: 15px;
         color: var(--txt-main-color);
         font-style: bold;
         border-bottom: solid 2px transparent;
+
+    &:hover, &:focus {
+        color: var(--txt-bright-color);
+        border-bottom: solid 2px var(--txt-bright-color);
+        outline: none;
+        cursor: pointer;
+    }
+    &:focus {
+        outline: 1px ridge var(--dark-yellow-color);
+        border-radius: 2px;
+        background-color: var(--dark-yellow-color);
+    }
+    &.active {
+        color: var(--txt-main-color);
+        border-bottom: ridge 2px var(--txt-main-color);
+    }
+`
+export const SpanStyledUserName = styled.span`
+    color: var(--btn-bg-active-clr);
+    font-size: 20px;
+    padding: 0 7px;
 `

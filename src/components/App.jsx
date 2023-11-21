@@ -24,7 +24,6 @@ const Login = lazy(() => import('pages/Login'))
 export function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.info('UPDATE USER DATA')
     dispatch(refreshUserDataThunk())
   }, [dispatch])
   return (

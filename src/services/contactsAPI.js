@@ -37,7 +37,7 @@ export const editContact  = async (contactId, contactData) => {
 // авторизация и регистрация
 export const signUp = async data => {
     const result = await api.post('/users/signup', data);
-    setToken(result.token); // сразу в инстанс записываем токен, последующие запросы автоматически будут с токеном
+    setToken(result.data.token); // сразу в инстанс записываем токен, последующие запросы автоматически будут с токеном
     return result;
 }
 export const logIn = async data => {

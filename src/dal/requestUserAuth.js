@@ -32,7 +32,7 @@ export const logoutThunk = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const result = await logOut();
-            return result;
+            return result.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
         }
@@ -46,7 +46,7 @@ export const refreshUserDataThunk = createAsyncThunk(
 
         try {
             const result = await userInfo(token);
-            return result;
+            return result.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
         }

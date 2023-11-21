@@ -1,11 +1,12 @@
 import React from 'react'
-import { NavLinkStyled } from './App.styled'
+import { ButtonStyledLogout, NavLinkStyled, SpanStyledUserName } from './App.styled'
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from 'dal/requestUserAuth';
-import { selectAuthAuthenticated } from 'redux/auth.selector';
+import { selectAuthAuthenticated, selectAuthUserInfo } from 'redux/auth.selector';
 
 const UserMenu = () => {
     const authenticated = useSelector(selectAuthAuthenticated);
+    const userInfo = useSelector(selectAuthUserInfo);
 
     const dispatch = useDispatch();
     const handleLogout = () => {
@@ -21,7 +22,11 @@ const UserMenu = () => {
             }
 
             {authenticated &&
-                <button onClick={handleLogout}>Log Out</button>
+                <>
+                {/* <img src="https://www.iconsdb.com/icons/preview/orange/checked-user-xxl.png" alt="user icon" /> */}
+                    Logged in as <SpanStyledUserName>{userInfo?.name}</SpanStyledUserName>
+                    <ButtonStyledLogout onClick={handleLogout}>Logout</ButtonStyledLogout>
+                </>
             }
         </div>
     )
