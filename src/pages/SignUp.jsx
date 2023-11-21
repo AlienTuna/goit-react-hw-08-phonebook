@@ -17,7 +17,6 @@ const SignUp = () => {
 
     const onSubmit = (formData) => {
         dispatch(signupThunk(formData))
-        // console.info('!!!Form Data on submit', formData)
         reset();
     }
 

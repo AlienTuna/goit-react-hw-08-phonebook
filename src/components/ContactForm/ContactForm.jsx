@@ -7,7 +7,7 @@ import { requestAddContact } from "dal/requestPhonebookData";
 
 export function ContactForm({ onAddContact }) {
     const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [number, setNumber] = useState('');
 
     const contacts = useSelector((state) => state.contactList.contacts);
     const dispatch = useDispatch();
@@ -21,11 +21,11 @@ export function ContactForm({ onAddContact }) {
         }
         return false
     }
-    const addNewContact = (name, phone) => {
+    const addNewContact = (name, number) => {
         if (checkContactByName(name)) {
             return
         }
-        dispatch(requestAddContact({ name, phone }))
+        dispatch(requestAddContact({ name, number }))
     }
 
     const saveFormState = e => {
@@ -33,7 +33,7 @@ export function ContactForm({ onAddContact }) {
         switch (name) {
             case 'name': setName(value);
                 break;
-            case 'phone': setPhone(value);
+            case 'number': setNumber(value);
                 break;
             default: return;
         }
@@ -41,12 +41,12 @@ export function ContactForm({ onAddContact }) {
     }
     const clearForm = () => {
         setName('');
-        setPhone('');
+        setNumber('');
     };
     const save = e => {
         e.preventDefault();
         const nameV = e.currentTarget.name.value;
-        const numV = e.currentTarget.phone.value;
+        const numV = e.currentTarget.number.value;
         addNewContact(nameV, numV);
         clearForm();
     }
@@ -69,12 +69,12 @@ export function ContactForm({ onAddContact }) {
             <label>Phone</label>
             <InputStyled
                 type="tel"
-                name="phone"
+                name="number"
                 // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 pattern="\+?\d{1,4}?[\u002D.\s]?\(?\d{1,3}?\)?[\u002D.\s]?\d{1,4}[\u002D.\s]?\d{1,4}[\u002D.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
-                value={phone}
+                value={number}
                 onChange={saveFormState}
             />
             <BtnStyled type="submit">save</BtnStyled>

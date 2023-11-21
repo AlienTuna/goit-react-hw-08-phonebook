@@ -55,7 +55,8 @@ const contactListSlice = createSlice({
              .addCase(requestAddContact.fulfilled, (state, action) => {
                 const addedContact = action.payload;
                 state.contacts.isLoading = false;
-                state.contacts.items = [...state.contacts.items, addedContact];
+                state.contacts.items.unshift(addedContact); // добавление нового элемента в массив
+                // state.contacts.items = [...state.contacts.items, addedContact];
              })
 })
 

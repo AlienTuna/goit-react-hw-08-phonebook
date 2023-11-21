@@ -2,7 +2,7 @@
     Thunk для работы с API авторизации
 */
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { logIn, logOut, setToken, signUp, userInfo } from "services/contactsAPI";
+import { logIn, logOut, signUp, userInfo } from "services/contactsAPI";
 
 
 export const loginThunk = createAsyncThunk(
@@ -29,7 +29,7 @@ export const signupThunk = createAsyncThunk(
 );
 export const logoutThunk = createAsyncThunk(
     'auth/logout',
-    async (data, thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
             const result = await logOut();
             return result;
@@ -45,8 +45,7 @@ export const refreshUserDataThunk = createAsyncThunk(
         const token = state.auth.token;
 
         try {
-            setToken(token)
-            const result = await userInfo();
+            const result = await userInfo(token);
             return result;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)

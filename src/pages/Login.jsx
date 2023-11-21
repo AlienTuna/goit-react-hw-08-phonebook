@@ -17,12 +17,7 @@ const Login = () => {
       } = useForm()
 
       const onSubmit = async (formData) => {
-        const result = await dispatch(loginThunk(formData))
-        // if(result.error) {
-
-        //     return;
-        // }
-        console.info('!!! Login Result', result)
+        await dispatch(loginThunk(formData))
         reset();
       }
 

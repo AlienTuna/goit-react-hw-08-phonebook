@@ -4,6 +4,7 @@
 
 import { useSelector } from "react-redux";
 import { selectAuthAuthenticated } from "redux/auth.selector";
+import UserMenu from "./UserMenu";
 
 const { NavStyled, NavLinkStyled } = require("./App.styled");
 
@@ -15,16 +16,15 @@ const Navigation = () => {
             {authenticated &&
                 <>
                     <NavLinkStyled to="/phonebook">Phonebook</NavLinkStyled>
-                    <button>Log Out</button>
-                    {/* <NavLinkStyled to="/user-info">User-info</NavLinkStyled> */}
                 </>
             }
             {!authenticated &&
                 <>
-                    <NavLinkStyled to="/login">Login</NavLinkStyled>
-                    <NavLinkStyled to="/register">Register</NavLinkStyled>
+                    <h2>Welcome to phonebook!</h2>
                 </>
             }
+            
+            <UserMenu />
         </NavStyled>
     )
 }

@@ -11,6 +11,7 @@ const api = axios.create({
     baseURL: BASE_URL,
 })
 
+// запись в инстанс заголовка с токеном авторизации
 export const setToken = (token) => {
     api.defaults.headers.common.Authorization = `Bearer ${token}`
 }
@@ -30,25 +31,26 @@ export const deleteContact  = async (contactId) => {
 }
 //action - "contacts/editContact"
 export const editContact  = async (contactId, contactData) => {
-    return await api.delete(`/contacts/${contactId}`);
+    return await api.delete(`/contacts/${contactId}`, contactData);
 }
 
 // авторизация и регистрация
 export const signUp = async data => {
     const result = await api.post('/users/signup', data);
-    setToken(result.token);
+    setToken(result.token); // сразу в инстанс записываем токен, последующие запросы автоматически будут с токеном
     return result;
 }
 export const logIn = async data => {
     const result = await api.post('/users/login', data);
-    setToken(result.token);
+    setToken(result.data.token);
     return result;
 }
 export const logOut = async () => {
     const result = await api.post('/users/logout');
     return result;
 }
-export const userInfo = async data => {
-    const result = await api.get('/users/current', data);
+export const userInfo = async (cachedToken) => {
+    setToken(cachedToken);
+    const result = await api.get('/users/current');
     return result;
 }

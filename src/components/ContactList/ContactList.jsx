@@ -23,12 +23,12 @@ export function ContactList() {
     return (
         <ul>
             {list.length
-                ? (list.map(({ id, name, phone }) =>
+                ? (list.map(({ id, name, number }) =>
                     <ContactListItem
                         key={id}
                         id={id}
                         name={name}
-                        phone={phone}
+                        number={number}
                     />
                 ))
                 : (<EmptyTxt>Contact list is empty</EmptyTxt>)

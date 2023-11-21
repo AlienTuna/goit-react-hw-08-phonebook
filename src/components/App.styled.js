@@ -16,8 +16,10 @@ export const NavStyled = styled.nav`
     font-weight: 700;
     font-weight: 700;
     padding: 30px;
-    /* display: flex; */
-    /* flex-direction: row; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
     background-color: var(--input-bg-clr);
     box-shadow: 0 5px 10px black;
@@ -44,4 +46,16 @@ export const NavLinkStyled = styled(NavLink)`
         color: var(--txt-main-color);
         border-bottom: ridge 2px var(--txt-main-color);
     }
+`
+
+export const ButtonStyledLogout = styled.button`
+        border: none;
+        background-color: none;
+
+        padding: 20px;
+        transition: all .5s;
+        font-size: 18px;
+        color: var(--txt-main-color);
+        font-style: bold;
+        border-bottom: solid 2px transparent;
 `
